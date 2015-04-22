@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<title>Арсеньев - народный портал! Сайт города Арсеньева</title>
-		<link rel="shortcut icon" href="pics/favicon.jpg"/>
+		<link rel="shortcut icon" href="./site_src/favicon.jpg"/>
 		<meta charset="utf-8">
+		<script type="text/javascript" src="./site_src/jquery.js"></script><style type="text/css"></style>
+		<script type="text/javascript" src="./site_src/jquery-migrate.min.js"></script>
 		<style>
 			TABLE{
 				margin: 0 auto;
@@ -49,6 +51,7 @@
 		   		color: #333333;
 		   		line-height: 20px;
 		   		font-weight: bold;
+				padding-bottom: 10px;
 		   	}
 			.right_table{
 				border-spacing: 0px 15px;
@@ -59,33 +62,64 @@
 				margin-bottom: 10px;
 				line-height: 18px;
 			}
+			.right_table table TD{
+				padding: 5px;
+				padding-right: 0px;
+			}
 			.bottom_border{
 				font: 12px sans-serif; 
 				white-space: normal;
 				border-bottom-width: 1px;
 				border-bottom-style: solid;
-				border-bottom-color: #DDDDDD
+				border-bottom-color: #DDDDDD;
 			}
+			
 			.news{
 				border-collapse: collapse;
 			}
 			.news TD{
 				border: 1px solid #DDD;
 				padding: 10px;
+				vertical-align: top
 			}
 			.news_image{
 				border: 1px solid #DDD;
 				padding: 5px;
-				margin-left: 10px;
+				margin-left: 5px;
 				margin-bottom: 10px;
 				float: right;
 			}
 			.comment{
 				padding-left: 20px;
 			}
+			.feast a{
+				font: 12px sans-serif;
+				color: black;
+			}
+			.feast img{
+				margin: 1px;
+			}
+			.gray{
+				font: 12px sans-serif;
+				white-space: normal;
+				color: #666666;
+				line-height: 18px;
+			}
+			.displayed{
+				display: block;
+				margin-left: auto;
+				margin-right: auto 
+			}
+			h1{
+				font-weight: bold;
+				font-size: 11px;
+			}
+			.video_title TD{
+				background: #f7f7f7;
+			}
    		</style>
 	</head>
-	<body style=" background: #DDDDDD">
+	<body style="background: #DDD">
 		<table style="padding: 15px; margin-top: 15px; margin-bottom: 15px; font-family: Arial, Helvetica, sans-serif; border: 1px solid #CCCCCC;">
 		<tr>
 		<td style="font: 11px sans-serif; font-weight: 600; border: 1px solid #DDDDDD; padding-top: 2px; padding-bottom: 2px">
@@ -96,20 +130,52 @@
 				<td>АРССИТИ » »</td>
 				<td>ГОСУСЛУГИ » »</td>
 				<td>ПОГОДА</td>
-				<td>Главнаяhhhhhhhhhhhhhhhhhhhhhhhhhh</td>
+				<td>Главнаяhhhhhhhhhhhhhhhhhhhhhhhhhhh</td>
 				<td>Главная</td>
+			<!--<div id="nav-right">		
+		
+					<div id="cse-search-form" style="width: 100%;"><div class="gsc-control-searchbox-only gsc-control-searchbox-only-ru" dir="ltr"><form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8"><table cellspacing="0" cellpadding="0" class="gsc-search-box"><tbody><tr><td class="gsc-input"><div class="gsc-input-box " id="gsc-iw-id1"><table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 " style="width: 100%; padding: 0px;"><tbody><tr><td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="поиск" id="gsc-i-id1" dir="ltr" spellcheck="false" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; outline: none; background: url(http://www.google.com/cse/intl/ru/images/google_custom_search_watermark.gif) 0% 50% no-repeat rgb(255, 255, 255);"></td><td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;"><span class="gscb_a" id="gs_cb50">×</span></a></div></td></tr></tbody></table></div><input type="hidden" name="bgresponse" id="bgresponse"></td><td class="gsc-search-button"><input type="image" src="./Арсеньев - народный портал! Сайт города Арсеньева_files/search_box_icon.png" class="gsc-search-button gsc-search-button-v2" title="поиск"></td><td class="gsc-clear-button"><div class="gsc-clear-button" title="удалить результаты">&nbsp;</div></td></tr></tbody></table><table cellspacing="0" cellpadding="0" class="gsc-branding"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">технология</div></td><td class="gsc-branding-img"><img src="./Арсеньев - народный портал! Сайт города Арсеньева_files/small-logo.png" class="gsc-branding-img"></td></tr></tbody></table></form></div></div>
+					<script src="./Арсеньев - народный портал! Сайт города Арсеньева_files/jsapi" type="text/javascript"></script>
+					<script type="text/javascript">
+					  google.load('search', '1', {language : 'ru', style : google.loader.themes.V2_DEFAULT});
+					  google.setOnLoadCallback(function() {
+						var customSearchOptions = {};
+						var imageSearchOptions = {};
+						imageSearchOptions['layout'] = google.search.ImageSearch.LAYOUT_POPUP;
+						customSearchOptions['enableImageSearch'] = true;
+						customSearchOptions['imageSearchOptions'] = imageSearchOptions;  var customSearchControl = new google.search.CustomSearchControl(
+						  'partner-pub-7120366523146171:0784664888', customSearchOptions);
+						customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+						var options = new google.search.DrawOptions();
+						options.setAutoComplete(true);
+						customSearchControl.setAutoCompletionId('partner-pub-7120366523146171:0784664888+qptype:1');
+						options.enableSearchboxOnly("http://www.google.com/cse?cx=partner-pub-7120366523146171:0784664888");
+						customSearchControl.draw('cse-search-form', options);
+					  }, true);
+					</script><script src="./Арсеньев - народный портал! Сайт города Арсеньева_files/saved_resource" type="text/javascript"></script><link href="./Арсеньев - народный портал! Сайт города Арсеньева_files/default+ru.css" type="text/css" rel="stylesheet"><link href="./Арсеньев - народный портал! Сайт города Арсеньева_files/default(1).css" type="text/css" rel="stylesheet"><script src="./Арсеньев - народный портал! Сайт города Арсеньева_files/default+ru.I.js" type="text/javascript"></script>
+
+					<style type="text/css">
+					  input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+						border-color: #D9D9D9;
+					  }
+					  input.gsc-search-button, input.gsc-search-button:hover, input.gsc-search-button:focus {
+						border-color: #660000;
+						background-color: #cc0000;
+						background-image: none;
+						filter: none;
+					  }</style>-->
 			</tr>
 			</table>
 		</td>
 		</tr>
 
 		<tr>
-		<td style="padding-bottom: 10px">
-			<img src="./pics/arsenyev_net.jpg" alt="Логотип сайта города Арсеньева" title="Сайт города Арсеньева">
+		<td style="padding-bottom: 10px; width: 930px">
+			<img src="./site_src/arsenyev_net.jpg" alt="Логотип сайта города Арсеньева" title="Сайт города Арсеньева">
 		</td>
 		</tr>
 		<tr>
-		<td style="border-top-color: #DDDDDD; border-top-style: solid; border-top-width: 1px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #CC0000; font-size: 13px">
+		<td style="width: 930px; border-top-color: #DDDDDD; border-top-style: solid; border-top-width: 1px; border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #CC0000; font-size: 13px">
 			<table class="menu" style="border-spacing: 0px 0px;">
 			<tr>
 				<td style = "height: 30px;">Видеоканал Арсеньев.NET</td>
@@ -118,221 +184,750 @@
 				<td>Новости из сети</td>
 				<td>Новости портала</td>
 				<td>Статьи и аналитика</td>
-				<td>&nbsp;&nbsp;&nbsp;</td>
+				<td>&nbsp;&nbsp;</td>
 			</tr>
 			</table>
 		</td>
 		</tr>
 		<tr>
 		<td>
-		<table>
-		<tr>
-		<td style="vertical-align: top">
-		<table style="width: 595px; font-size: 11px; color: #666666;">
+			<table>
 			<tr>
-			<td style="padding-top: 15px">
-				<img src="./pics/akira_kurosava.jpg" alt="Акира Куросава" width="595" height="292" title="105 лет со дня рождения Акиры Куросавы">
-			</td>
-			</tr>
-			<tr>
-			<td>
-			<table class="news" style="margin-top: 15px;">
+			<td style="vertical-align: top">
+			<table style="width: 595px; font-size: 11px; color: #666666;">
 				<tr>
-				<td style="width: 288px; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
-					<img src="./pics/0(2).jpg" width="100" height="57" alt="Акира Куросава" title="В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»" class="news_image">
-					<a href="#" class="title">В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»</a>
-					<p><em>18 Март 2015</em></p>
-					<p>То, что в пионерские времена звали красиво и сурово — «Зарница», в 2003-ем в Арсеньеве переименовали в нежное и ласковое «Зарничка». (далее…)</p>
+				<td style="padding-top: 15px">
+					<img src="./site_src/akira_kurosava.jpg" alt="Акира Куросава" width="595" height="292" title="105 лет со дня рождения Акиры Куросавы">
 				</td>
-				<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+				</tr>
+				<tr>
+				<td>
+				<table class="news" style="margin-top: 15px;">
+					<tr>
+					<td style="width: 286px; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#"><img src="./site_src/0(2).jpg" width="100" height="57" alt="Акира Куросава" title="В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»" class="news_image"></a>
+						<a href="#" style="width: 130px" class="title">В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»</a>
+						<p><em>18 Март 2015</em></p>
+						<p>То, что в пионерские времена звали красиво и сурово — «Зарница», в 2003-ем в Арсеньеве переименовали в нежное и ласковое «Зарничка». (далее…)</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+							
+					</td>
+					<td style="vertical-align: top; width: 286px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#"><img src="./site_src/arspolice-100x57.jpg" width="100" height="57"
+						alt="В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»"
+						title="Дежурная часть МОМВД России «Арсеньевский» сообщает" class="news_image"></a>
+						<a href="#" class="title">Дежурная часть МОМВД России «Арсеньевский» сообщает</a>
+						<p><em>16 Март 2015</em></p>
+						<p>За прошедшую неделю с 09. 03. 2015 г. по 15.03.2015 г. дежурной частью Межмуниципального отдела Министерства Внутренних Дел России «Арсеньевский» зарегистрировано 251 сообщение и заявление (далее…)</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
 						
-				</td>
-				<td style="vertical-align: top; width: 288px; padding-bottom: 0px; border-bottom-width: 0px">
-					<img src="./pics/arspolice-100x57.jpg" width="100" height="57"
-					alt="В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»"
-					title="Дежурная часть МОМВД России «Арсеньевский» сообщает" class="news_image">
-					<a href="#" class="title">Дежурная часть МОМВД России «Арсеньевский» сообщает</a>
-					<p><em>16 Март 2015</em></p>
-					<p>За прошедшую неделю с 09. 03. 2015 г. по 15.03.2015 г. дежурной частью Межмуниципального отдела Министерства Внутренних Дел России «Арсеньевский» зарегистрировано 251 сообщение и заявление (далее…)</p>
-				</td>
-				</tr>
-				<tr>
-				<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
-					<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
-					<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
-					</p>
-				</td>
-				<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
-					
-				</td>
-				<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
-					<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
-					<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
-					</p>
-				</td>
-				</tr>
-				<tr>
-				<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
-					Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
-				</td>
-				<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
-				<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
-					Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
-				</td>
-				</tr>
-				<!--Второй блок новостей-->
-				<tr>
-				<td style="height: 20px; border: 0px">
-				</td>
-				</tr>
-				<tr>
-				<td style="width: 288px; vertical-align: top; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
-					<img src="./pics/car.jpg" alt="В Арсеньеве ямы на дорогах засыпают деньгами" width="100" height="57" title="В Арсеньеве ямы на дорогах засыпают деньгами" class="news_image"></a>
-					<a href="#" class="title" title="В Арсеньеве ямы на дорогах засыпают деньгами">В Арсеньеве ямы на дорогах засыпают деньгами</a>
-					<p><em>18 Март 2015</em></p>
-					<p>Арсеньевские автолюбители провели флешмоб для того чтобы привлечь внимание к проблеме ужасного качества дорог в городе Арсеньеве и сделали об этом видеоролик. (далее…)</p>
-				</td>
-				<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
-					
-				</td>
-				<td style="vertical-align: top; width: 288px; padding-bottom: 0px; border-bottom-width: 0px">
-					<img src="./pics/arspolice-100x57.jpg" style="float: right" width="100" height="57"
-					alt="В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»"
-					title="Дежурная часть МОМВД России «Арсеньевский» сообщает" class="news_image">
-					<a href="#" class="title">Дежурная часть МОМВД России «Арсеньевский» сообщает</a>
-					<p><em>16 Март 2015</em></p>
-					<p>За прошедшую неделю с 09. 03. 2015 г. по 15.03.2015 г. дежурной частью Межмуниципального отдела Министерства Внутренних Дел России «Арсеньевский» зарегистрировано 251 сообщение и заявление (далее…)</p>
-				</td>
-				</tr>
-				<tr>
-				<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
-					<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
-					<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
-					</p>
-				</td>
-				<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
-					
-				</td>
-				<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
-					<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
-					<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
-					</p>
-				</td>
-				</tr>
-				<tr>
-				<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
-					Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
-				</td>
-				<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
-				<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
-					Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					</tr>
+					<!--Второй блок новостей-->
+					<tr>
+					<td colspan="3" style="height: 20px; border: 0px">
+					</td>
+					</tr>
+					<tr>
+					<td style="width: 288px; vertical-align: top; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#"><img src="./site_src/car.jpg" alt="В Арсеньеве ямы на дорогах засыпают деньгами" width="100" height="57" 
+						title="В Арсеньеве ямы на дорогах засыпают деньгами" class="news_image"></a>
+						<a href="#" class="title" title="В Арсеньеве ямы на дорогах засыпают деньгами">В Арсеньеве ямы на дорогах засыпают деньгами</a>
+						<p><em>18 Март 2015</em></p>
+						<p>Арсеньевские автолюбители провели флешмоб для того чтобы привлечь внимание к проблеме ужасного качества дорог в городе Арсеньеве и сделали об этом видеоролик. (далее…)</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="vertical-align: top; width: 288px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#"><img src="./site_src/0(3).jpg" style="float: right" width="100" height="57"
+						alt="Тележурнал «Наша Неделя» эфир 14 марта 2015 г"
+						title="Тележурнал «Наша Неделя» эфир 14 марта 2015 г" class="news_image"></a>
+						<a class="title" title="Постоянная ссылка на Тележурнал «Наша Неделя» эфир 14 марта 2015 г" href="#" rel="bookmark">Тележурнал «Наша Неделя» эфир 14 марта 2015 г</a>
+						<p><em>14 марта 2015</em></p>
+						<p>Еженедельная информационно-аналитическая программа телеканала «ТВ ТРЕК» — РЕН Арсеньев о жизни города Арсеньева, Приморского края (далее…)</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					</tr>
+					<!--Третий блок новостей-->
+					<tr>
+					<td colspan="3" style="height: 0px; border: 0px">
+					</td>
+					</tr>
+					<tr>
+					<td style="width: 288px; vertical-align: top; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#"><img src="./site_src/ka-52k-100x57.jpg" 
+						title="В воздух поднялся первый корабельный вертолет Ка-52К" 
+						alt="В воздух поднялся первый корабельный вертолет Ка-52К" width="100" height="57" class="news_image"></a>
+						<a class="title" title="Постоянная ссылка на В воздух поднялся первый корабельный вертолет Ка-52К" href="#">В воздух поднялся первый корабельный вертолет Ка-52К</a>
+						<p><em>10 Март 2015</em></p>
+						<p>Событие прошло более чем скромно – без фанфар и криков «ура». В совершенно будничном для заводского аэродрома режиме в 14-00 в воздух поднялся первый корабельный вертолет Ка-52К. (далее…)</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="vertical-align: top; width: 288px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#"><img src="./site_src/0(4).jpg" style="float: right" width="100" height="57"
+						alt="Тележурнал «Наша Неделя» эфир 7 марта 2015 г"
+						title="Тележурнал «Наша Неделя» эфир 7 марта 2015 г" class="news_image"></a>
+						<a class="title" title="Постоянная ссылка на Тележурнал «Наша Неделя» эфир 7 марта 2015 г" href="#">Тележурнал «Наша Неделя» эфир 7 марта 2015 г</a>
+						<p><em>09 Март 2015</em></p>
+						<p>Еженедельная информационно-аналитическая программа телеканала «ТВ ТРЕК» — РЕН Арсеньев о жизни города Арсеньева, Приморского края (далее…)</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					</tr>
+					<!--Чётвертый блок новостей-->
+					<tr>
+					<td colspan="3" style="border: 0px; padding-bottom: 0px">
+						<a href="http://arsenyev.net/bazar/"><img class="displayed" src="./site_src/arsbazar.gif" alt="АрсБазар - доска объявлений города Арсеньева"></a>
+					</td>
+					</tr>
+					<tr>
+					<td style="width: 288px; vertical-align: top; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#"><img src="./site_src/0(5).jpg" alt="Постоянная ссылка на Тележурнал «Наша Неделя» эфир 28 февраля 2015 г" 
+						width="100" height="57" title="Тележурнал «Наша Неделя» эфир 28 февраля 2015 г" class="news_image"></a>
+						<a class="title" href="#" title="Тележурнал «Наша Неделя» эфир 28 февраля 2015 г">Тележурнал «Наша Неделя» эфир 28 февраля 2015 г</a>
+						<p><em>02 Март 2015</em></p>
+						<p>Еженедельная информационно-аналитическая программа телеканала «ТВ ТРЕК» — РЕН Арсеньев о жизни города Арсеньева, Приморского края (далее…)</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="vertical-align: top; width: 288px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#" class="news_image" title="Прокурором города Арсеньева приняты меры к недобросовестным Управляющим компаниям и ТСЖ"><img src="./site_src/DSC2071-100x57.jpg" alt="Прокуратура городской суд Арсеньева" width="100" height="57" title="Прокурором города Арсеньева приняты меры к недобросовестным Управляющим компаниям и ТСЖ"></a> 
+						<a class="title" title="Постоянная ссылка на Прокурором города Арсеньева приняты меры к недобросовестным Управляющим компаниям и ТСЖ" href="#">Прокурором города Арсеньева приняты меры к недобросовестным Управляющим компаниям и ТСЖ</a>
+						<p><em>03 Март 2015</em></p>
+						<p>В феврале 2015 года прокуратурой города Арсеньева проведена проверка в сфере жилищно-коммунального хозяйства, по результатам которой выявлены нарушения в деятельности управляющих компаний и ТСЖ городского округа. Согласно пункту 4.6.1.23 Правил и норм технической эксплуатации жилищного фонда, утвержденных Постановлением Госстроя России от 27.09.2003 № 170, эксплуатирующие организации обязаны своевременно удалять наледь и сосульки с кровель многоквартирных […]</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					</tr>
+					<!--Пятый блок новостей-->
+					<tr>
+					<td colspan="3" style="border: 0px; padding-bottom: 0px">
+					</td>
+					</tr>
+					<tr>
+					<td style="width: 288px; vertical-align: top; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#" title="Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева"><img src="./site_src/0(6).jpg" class="news_image" alt="Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева" width="100" height="57" title="Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева" ></a> 
+						<a title="Постоянная ссылка на Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева" class="title" href="#">Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева</a>
+						<p><em>02 Март 2015</em></p>
+						<p>В Арсеньев приехали специалисты природоохранных служб, чтобы провести исследование водоема, на котором накануне массово погибла речная рыба. (далее…)</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="vertical-align: top; width: 288px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#" title="Рядом с Арсеньевом произошла экологическая катастрофа?"><img src="./site_src/0(8).jpg" alt="Рядом с Арсеньевом произошла экологическая катастрофа?" width="100" height="57" title="Рядом с Арсеньевом произошла экологическая катастрофа?" class="news_image"></a> 
+						<a title="Постоянная ссылка на Рядом с Арсеньевом произошла экологическая катастрофа?" class="title" href="">Рядом с Арсеньевом произошла экологическая катастрофа?</a>
+						<p><em>24 Февраль 2015</em></p>
+
+						<p>Рыбаки Арсеньева бьют тревогу. На одном из искусственных озер рядом с городом массовая гибель рыбы. (далее…)</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					</tr>
+					<!--Шестой блок новостей-->
+					<tr>
+					<td colspan="3" style="border: 0px; padding-bottom: 0px">
+					</td>
+					</tr>
+					<tr>
+					<td style="width: 288px; vertical-align: top; padding-bottom: 0px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#" title="Жители Арсеньева жалуются президенту на растущие цены на продукты"><img src="./site_src/0(7).jpg" alt="Жители Арсеньева жалуются президенту на растущие цены на продукты" width="100" height="57" title="Жители Арсеньева жалуются президенту на растущие цены на продукты" class="news_image"></a> 
+						<a class="title" title="Постоянная ссылка на Жители Арсеньева жалуются президенту на растущие цены на продукты" href="#">Жители Арсеньева жалуются президенту на растущие цены на продукты</a>
+						<p><em>02 Март 2015</em></p>
+						<p>Жители Арсеньева с конца прошлого года в адрес приемной президента Российской Федерации Владимира Путина отправили жалобы на ряд нарушений в торговле продуктами питания (далее…)</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="vertical-align: top; width: 288px; padding-bottom: 0px; border-bottom-width: 0px">
+						<a href="#" title="Место строительства второго перинатального центра в Приморье по-прежнему под вопросом"><img src="./site_src/baby-100x57.jpg" alt="дети ребенок" width="100" height="57" title="Место строительства второго перинатального центра в Приморье по-прежнему под вопросом" class="news_image"></a> 
+						<a class="title" title="Постоянная ссылка на Место строительства второго перинатального центра в Приморье по-прежнему под вопросом" href="#">Место строительства второго перинатального центра в Приморье по-прежнему под вопросом</a>
+						<p><em>23 Февраль 2015</em></p>
+
+						<p>Окончательное решение о строительстве второго в Приморском крае перинатального центра, который бы замкнул на себя рожениц с «северов», пока не принято. (далее…)</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px">
+						
+					</td>
+					<td style="padding: 0px; border-top-width: 0px; padding-bottom: 10px">
+						<p style="margin: 0px; padding: 5px; padding-left: 10px; padding-right: 10px;">
+						<span style="padding-left: 15px; height: 15px"><a href="#" style="color:black; font-weight: bold; virtual-align: bottom">Читать полностью</a></span>
+						</p>
+					</td>
+					</tr>
+					<tr>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Видеоканал Арсеньев.NET</a>, <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					<td style="width: 5px; padding-left: 0px; border-top-width: 0px; border-bottom-width: 0px"></td>
+					<td style="padding: 5px; padding-left: 10px; padding-right: 10px; height: 30px; vertical-align: top; background-color: #eeeeee; text-align: right">
+						Размещено в <a href="#" style="color:black">Новости Арсеньева</a><span class="comment"><a href="#" style="color:black">Комментариев пока нет</a></span>
+					</td>
+					</tr>
+					<tr>
+					<td colspan="3" style="text-align: right; border: 0px">
+						<a href="#" style="color: black;">Ранее »</a>
+					</td>
+					</tr>
+					<tr>
+					<td colspan="3" style="padding: 0px; border: 0px">
+					<table style="background: #eee; border-spacing: 5px; 10px;">
+						<tr>
+						<td style="padding: 0px; vertical-align: top; border: 0px">
+							<iframe style="border: 0px; width:285px; height:234px;" src="./site_src/IKFAETAWqk0.html"></iframe>
+						</td>
+						<td style="color: black; vertical-align: top; width: 293px; padding: 10px; border: 0px; background: #FFF; vertical-align: top">
+							<h1 style="padding: 0px; padding-bottom: 5px; margin: 0px">Видеоканал Арсеньев.NET</h1>
+							<h3 style="color: #C00; font-size: 18px; margin: 0px">Тележурнал «Наша Неделя» эфир 21 марта 2015 г</h3>
+							<p style="color: #666; margin-bottom: 0px; margin-top: 10px; padding-bottom: 20px">Добавлено 23 Март 2015</p>
+							<h2 style="font-size: 12px; margin: 0px; padding-bottom: 5px">Смотреть ещё видео</h2>
+							<table class="video_title" style="border-spacing: 0px 5px; line-height: 10px;">
+								<tr>
+								<td style=" padding: 10px">
+									<a style="color: black" title="Прямая ссылка В Приморье учат летать морских «Аллигаторов»" href="#">В Приморье учат летать морских «Аллигаторов»</a>
+								</td>
+								</tr>
+								<tr>
+								<td>
+									<a style="color: black" title="Прямая ссылка В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»" href="#">В Арсеньеве для дошкольников устроили детскую патриотическую игру «Зарничка»</a>
+								</td>
+								</tr>
+								<tr>
+								<td>
+									<a style="color: black" title="Прямая ссылка Тележурнал «Наша Неделя» эфир 14 марта 2015 г" href="#">Тележурнал «Наша Неделя» эфир 14 марта 2015 г</a>
+								</td>
+								</tr>
+								<tr>
+								<td>
+									<a style="color: black" title="Прямая ссылка Тележурнал «Наша Неделя» эфир 7 марта 2015 г" href="#">Тележурнал «Наша Неделя» эфир 7 марта 2015 г</a>
+								</td>
+								</tr>
+								<tr>
+								<td>	
+									<a style="color: black" title="Прямая ссылка Тележурнал «Наша Неделя» эфир 28 февраля 2015 г" href="#">Тележурнал «Наша Неделя» эфир 28 февраля 2015 г</a>
+								</td>
+								</tr>
+							</table>
+						</td>
+						</tr>
+					</table>
+					</td>
+					</tr>
+					</table>
 				</td>
 				</tr>
 			</table>
 			</td>
+			<td style="width: 335px; vertical-align: top">
+				<table class="right_table">
+					<tr>
+					<td class="redtd">
+						Спонсоры проекта
+					</td>           
+					</tr>
+					<tr>
+					<td style="font: 12px sans-serif; font-weight: 600; white-space: nowrap;">
+					<a href="#" style="color: black" title="Компьютерный салон MATRIX - компьютеры, ноутбуки, принтеры, мониторы, телевизоры, ремонт компьютеров, картриджи и расходные материалы">MATRIX</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#" style="color: black" title="Разместить свою рекламу">Разместить свою рекламу</a></td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Реклама
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Поиск в справочнике Арсеньева АрсВики 
+					</td>
+					</tr>
+					<tr>
+					<td style="font: 12px sans-serif; white-space: normal; color: #666666; line-height: 18px;">
+						Поиск организаций и телефонов в справочнике города Арсеньева:
+						<form action="http://arsenyev.net/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:Search" method="get" target="_blank" id="searchform">
+							<input type="text" value="расписание автобусов" accesskey="f" style="width: 127px; height: 15px; padding: 5px; border: 1px solid #DDD; font: 12px sans-serif;"
+							title="Искать это слово" name="search" id="searchInput">
+							&nbsp;<input type="submit" title="Перейти к странице, имеющей в точности такое название" value="Перейти" id="searchGoButton" class="searchButton" name="go" style="background-color: #ddd; ">
+							<input type="submit" title="Найти страницы, содержащие указанный текст" value="Найти" id="mw-searchButton" class="searchButton" name="fulltext">
+						</form><br>
+						Вы можете самостоятельно бесплатно дополнить
+						или исправить информацию о себе в <a href="#" style="color: black" title="Сравочник Арсеньева">народном справочнике АрсВики.</a>
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Знакомства Арсеньев
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						<img style="border:0px" width="14" height="14" src="./site_src/rss.png" alt="RSS">
+						Арсеньевская соцсеть ArsCity
+					</td>
+					</tr>
+					<tr>
+					<td>
+					<table>
+						<tr>
+						<td class="bottom_border">
+							105 лет со дня рождения Акиры Куросавы
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border">
+							Три-четыре чашки чая в день сокращают риск диабета, выяснили ученые
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border">
+							В Приморье учат летать морских «Аллигаторов»
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border">
+							В воздух поднялся первый корабельный вертолет Ка-52К
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border">
+							Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева
+						</td>
+						</tr>
+					</table>
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Реклама
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Свежие комментарии
+					</td>
+					</tr>
+					<tr>
+					<td>
+					<table>
+						<tr>
+						<td class="bottom_border" style="color: #666666">
+							<a href="#" style="color:black">Жители Арсеньева жалуются президенту на растущие цены на продукты | Виртуальный город ArsCity</a>
+							к записи
+							<a href="#" style="color:black">Жители Арсеньева жалуются президенту на растущие цены на продукты</a>
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border" style="color: #666666">
+							<a href="#" style="color:black">Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева | Виртуальный город ArsCity</a>
+							к записи
+							<a style="color:black" href="#" >Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева</a>
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border" style="color: #666666">
+							<a href="#" style="color:black">Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева | Арсеньев - народный портал!</a>
+							к записи
+							<a href="#" style="color:black">Рядом с Арсеньевом произошла экологическая катастрофа?</a>
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border" style="color: #666666">
+							<a href="#" style="color:black">Rainbow_Spike</a>
+							к записи
+							<a href="#" style="color:black">В Арсеньеве в центре по внешкольной работе второй год существует детская мультстудия</a>
+						</td>
+						</tr>
+						<tr>
+						<td class="bottom_border" style="color: #666666">
+							игорь к записи
+							<a href="#" style="color:black">В Арсеньеве в канун старого нового года дед мороз подарил утюг «правильному» водителю</a>
+						</td>
+						</tr>
+					</table>
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Арсеньев в соцсетях
+					</td>
+					</tr>
+					<tr>
+					<td>
+						<!--scrolling="no"-->
+						<iframe name="fXD8ad4a" src="./site_src/widget_community.html" width="300" height="200" id="vkwidget1" style="height: 140px; border: 0px"></iframe>
+					</td>
+					</tr>
+					<tr>
+					<td>
+						<span style="vertical-align: bottom; width: 300px; height: 271px;"><iframe name="f160bf84d8" title="fb:like_box Facebook Social Plugin" src="./site_src/like_box.html" style="border: none; visibility: visible; width: 300px; height: 271px; border: 0px" class=""></iframe></span>
+					</td>
+					</tr>
+					<tr>
+					<td>
+						<iframe id="__okGroup0" src="./site_src/dk.html" style="border: 0px; width: 305px; height: 335px; border: 0px"></iframe>
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Праздники
+					</td>
+					</tr>
+					<tr>
+					<td class="feast">
+						<a target="_blank" href="http://www.calend.ru/holidays/3-25/">25 марта 2015 (ср):</a><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/0/0/2257/">День работника культуры России</a><br>
+						<img src="./site_src/pik-prof.gif" alt="Профессиональный праздник" title="Профессиональный праздник" width="16" height="11"><img src="./site_src/1.gif" alt="Праздники России" title="Праздники России" width="16" height="11"><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/0/0/2793/">Международный день солидарности с сотрудниками, содержащимися под стражей и пропавшими без вести</a><br>
+						<img src="./site_src/79.gif" alt="Праздники ООН" title="Праздники ООН" width="16" height="11"><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/0/0/2820/">Международный день памяти жертв рабства и трансатлантической работорговли</a><br>
+						<img src="./site_src/79.gif" alt="Праздники ООН" title="Праздники ООН" width="16" height="11"><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/0/0/1601/">День службы безопасности Украины</a><br>
+						<img src="./site_src/pik-prof.gif" alt="Профессиональный праздник" title="Профессиональный праздник" width="16" height="11"><img src="./site_src/6.gif" alt="Праздники Украины" title="Праздники Украины" width="16" height="11"><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/0/0/274/">Католическое Благовещение Девы Марии</a>
+						<img src="./site_src/3.gif" alt="Католические праздники" title="Католические праздники" width="16" height="11"><br>
+						<a target="_blank" href="http://www.calend.ru/narodevent/6542/">Феофанов день</a><br><br>
+						<span class="gray">Именины:</span> <a target="_blank" href="http://www.calend.ru/names/0/0/5/">Александр</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/38/">Владимир</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/53/">Григорий</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/58/">Дмитрий</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/68/">Иван</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/83/">Константин</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/326/">Семен</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/144/">Сергей</a><br><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/3-26/">26 марта 2015 (чт):</a><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/0/0/3138/">Фиолетовый день (День больных эпилепсией)</a><br>
+						<img src="./site_src/15.gif" alt="Международные праздники" title="Международные праздники" width="16" height="11"><br>
+						<a target="_blank" href="http://www.calend.ru/holidays/0/0/1602/">День внутренних войск МВД Украины</a><br>
+						<img src="./site_src/pik-prof.gif" alt="Профессиональный праздник" title="Профессиональный праздник" width="16" height="11"> <img src="./site_src/6.gif" alt="Праздники Украины" title="Праздники Украины" width="16" height="11"><br>
+						<a target="_blank" href="http://www.calend.ru/narodevent/6543/">Никифоров день</a><br><br>
+						<span class="gray">Именины:</span> <a target="_blank" href="http://www.calend.ru/names/0/0/5/">Александр</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/53/">Григорий</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/244/">Кристина</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/105/">Михаил</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/114/">Николай</a>, <a target="_blank" href="http://www.calend.ru/names/0/0/148/">Терентий</a>
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Ключевые слова
+					</td>
+					</tr>
+					<tr>
+					<td>
+					
+					<div id="vkapi_CloudCanvasContainer">
+						<canvas width="320" height="300" id="vkapi_cloud">
+							<p>http://www.kowack.info/</p>
+						</canvas>
+						<div id="vkapi_tags" style="display: none;">
+							<a href="http://arsenyev.net/tag/aak-progress" class="tag-link-37" title="142 записи" style="font-size: 12.605263157895pt;">ААК Прогресс</a>
+							<a href="http://arsenyev.net/tag/administratsiya-go" class="tag-link-163" title="349 записей" style="font-size: 16.105263157895pt;">Администрация ГО</a>
+							<a href="http://arsenyev.net/tag/alligator" class="tag-link-38" title="55 записей" style="font-size: 8.8289473684211pt;">Аллигатор</a>
+							<a href="http://arsenyev.net/tag/arsenev" class="tag-link-6" title="1 530 записей" style="font-size: 22pt;">Арсеньев</a>
+							<a href="http://arsenyev.net/tag/arsenevskiy-gorodskoy-okrug" class="tag-link-194" title="935 записей" style="font-size: 20.065789473684pt;">Арсеньевский городской округ</a>
+							<a href="http://arsenyev.net/tag/askold" class="tag-link-47" title="89 записей" style="font-size: 10.671052631579pt;">Аскольд</a>
+							<a href="http://arsenyev.net/tag/byudzhet" class="tag-link-76" title="75 записей" style="font-size: 10.026315789474pt;">Бюджет</a>
+							<a href="http://arsenyev.net/tag/vlast" class="tag-link-36" title="222 записи" style="font-size: 14.355263157895pt;">Власть</a>
+							<a href="http://arsenyev.net/tag/gibdd" class="tag-link-224" title="56 записей" style="font-size: 8.9210526315789pt;">ГИБДД</a>
+							<a href="http://arsenyev.net/tag/dalniy-vostok" class="tag-link-95" title="71 запись" style="font-size: 9.8421052631579pt;">Дальний Восток</a>
+							<a href="http://arsenyev.net/tag/zhkh" class="tag-link-43" title="152 записи" style="font-size: 12.789473684211pt;">ЖКХ</a>
+							<a href="http://arsenyev.net/tag/zdravoohranenie" class="tag-link-70" title="104 записи" style="font-size: 11.315789473684pt;">Здравоохранение</a>
+							<a href="http://arsenyev.net/tag/ka-52" class="tag-link-65" title="71 запись" style="font-size: 9.8421052631579pt;">Ка-52</a>
+							<a href="http://arsenyev.net/tag/kriminal" class="tag-link-21" title="241 запись" style="font-size: 14.631578947368pt;">Криминал</a>
+							<a href="http://arsenyev.net/tag/kultura" class="tag-link-51" title="88 записей" style="font-size: 10.671052631579pt;">Культура</a>
+							<a href="http://arsenyev.net/tag/lyudi" class="tag-link-20" title="49 записей" style="font-size: 8.3684210526316pt;">Люди</a>
+							<a href="http://arsenyev.net/tag/mchs" class="tag-link-108" title="70 записей" style="font-size: 9.75pt;">МЧС</a>
+							<a href="http://arsenyev.net/tag/ovd" class="tag-link-4509" title="124 записи" style="font-size: 12.052631578947pt;">ОВД</a>
+							<a href="http://arsenyev.net/tag/otdyih" class="tag-link-45" title="75 записей" style="font-size: 10.026315789474pt;">Отдых</a>
+							<a href="http://arsenyev.net/tag/primorskiy-kray" class="tag-link-33" title="926 записей" style="font-size: 20.065789473684pt;">Приморский край</a>
+							<a href="http://arsenyev.net/tag/proisshestviya" class="tag-link-73" title="327 записей" style="font-size: 15.921052631579pt;">Происшествия</a>
+							<a href="http://arsenyev.net/tag/razvitie" class="tag-link-17" title="237 записей" style="font-size: 14.631578947368pt;">Развитие</a>
+							<a href="http://arsenyev.net/tag/rossiya" class="tag-link-42" title="185 записей" style="font-size: 13.618421052632pt;">Россия</a>
+							<a href="http://arsenyev.net/tag/sport" class="tag-link-9" title="235 записей" style="font-size: 14.539473684211pt;">Спорт</a>
+							<a href="http://arsenyev.net/tag/turizm" class="tag-link-35" title="59 записей" style="font-size: 9.1052631578947pt;">Туризм</a>
+							<a href="http://arsenyev.net/tag/foto" class="tag-link-8" title="77 записей" style="font-size: 10.118421052632pt;">Фото</a>
+							<a href="http://arsenyev.net/tag/shkola" class="tag-link-67" title="83 записи" style="font-size: 10.394736842105pt;">Школа</a>
+							<a href="http://arsenyev.net/tag/ekonomika" class="tag-link-41" title="83 записи" style="font-size: 10.394736842105pt;">Экономика</a>
+							<a href="http://arsenyev.net/tag/aviastroenie" class="tag-link-40" title="79 записей" style="font-size: 10.210526315789pt;">авиастроение</a>
+							<a href="http://arsenyev.net/tag/anons" class="tag-link-4757" title="51 запись" style="font-size: 8.5526315789474pt;">анонс</a>
+							<a href="http://arsenyev.net/tag/vertolet" class="tag-link-48" title="80 записей" style="font-size: 10.302631578947pt;">вертолет</a>
+							<a href="http://arsenyev.net/tag/veteranyi" class="tag-link-154" title="69 записей" style="font-size: 9.75pt;">ветераны</a>
+							<a href="http://arsenyev.net/tag/vospitanie" class="tag-link-113" title="122 записи" style="font-size: 11.960526315789pt;">воспитание</a>
+							<a href="http://arsenyev.net/tag/dezhurnaya-chast" class="tag-link-5072" title="73 записи" style="font-size: 9.9342105263158pt;">дежурная часть</a>
+							<a href="http://arsenyev.net/tag/deti" class="tag-link-122" title="198 записей" style="font-size: 13.894736842105pt;">дети</a>
+							<a href="http://arsenyev.net/tag/zanyatost" class="tag-link-91" title="48 записей" style="font-size: 8.2763157894737pt;">занятость</a>
+							<a href="http://arsenyev.net/tag/konkurs" class="tag-link-89" title="110 записей" style="font-size: 11.592105263158pt;">конкурс</a>
+							<a href="http://arsenyev.net/tag/nagrada" class="tag-link-189" title="66 записей" style="font-size: 9.5657894736842pt;">награда</a>
+							<a href="http://arsenyev.net/tag/obrazovanie" class="tag-link-11" title="119 записей" style="font-size: 11.868421052632pt;">образование</a>
+							<a href="http://arsenyev.net/tag/prazdnik" class="tag-link-75" title="231 запись" style="font-size: 14.539473684211pt;">праздник</a>
+							<a href="http://arsenyev.net/tag/prokuratura" class="tag-link-103" title="99 записей" style="font-size: 11.131578947368pt;">прокуратура</a>
+							<a href="http://arsenyev.net/tag/statistika" class="tag-link-79" title="121 запись" style="font-size: 11.960526315789pt;">статистика</a>
+							<a href="http://arsenyev.net/tag/tv-trek" class="tag-link-4958" title="100 записей" style="font-size: 11.131578947368pt;">тв-трек</a>
+							<a href="http://arsenyev.net/tag/teploenergetika" class="tag-link-112" title="45 записей" style="font-size: 8pt;">теплоэнергетика</a>
+							<a href="http://arsenyev.net/tag/shkolniki" class="tag-link-244" title="85 записей" style="font-size: 10.486842105263pt;">школьники</a>
+							<a href="http://arsenyev.net/news/videokanal-arsenev-net" title="Новости г.Арсеньева в виде видео и слайдшоу">Видеоканал Арсеньев.NET</a> (296)<br>
+							<a href="http://arsenyev.net/news/narodnaya-novost">Народная новость</a> (223)<br>
+							<a href="http://arsenyev.net/news/novosti-arseneva" title="Новости города Арсеньева">Новости Арсеньева</a> (2 086)<br>
+							<a href="http://arsenyev.net/news/novosti-iz-seti" title="Новости из интернета">Новости из сети</a> (883)<br>
+							<a href="http://arsenyev.net/news/novosti-portala" title="Новости и объявления администрации портала">Новости портала</a> (41)<br>
+							<a href="http://arsenyev.net/news/stati-i-analitika" title="Статьи и аналитика">Статьи и аналитика</a> (183)<br>
+						</div>
+						<script type="text/javascript" src="./site_src/jquery.tagcanvas.min.js"></script>
+						<script type="text/javascript">
+							if( ! jQuery('#vkapi_cloud').tagcanvas({
+								reverse: true,
+								// maxSpeed: .5,
+								initial: [0.3,-0.3],
+								minSpeed: .025,
+								textColour: '#0066cc',
+								textFont: null,
+								outlineColour: '#743399',
+								pulsateTo: .9,
+								wheelZoom: false,
+								shadow: '#666',
+								depth: 1.1,
+								minBrightness: .5,
+								weight: true,
+								weightMode: 'colour',
+								zoom: .888,
+								weightSize: 3
+							}, 'vkapi_tags')) {
+								jQuery('#vkapi_CloudCanvasContainer').hide();
+							}
+						</script>
+					</div>
+					</td>
+					</tr>
+					<tr>
+					<td class="redtd">
+						Архивы
+					</td>
+					</tr>
+					<tr>
+					<td>
+					<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+					<option value="">Выберите месяц</option>
+						<option value="http://arsenyev.net/2015/03"> Март 2015 </option>
+						<option value="http://arsenyev.net/2015/02"> Февраль 2015 </option>
+						<option value="http://arsenyev.net/2015/01"> Январь 2015 </option>
+						<option value="http://arsenyev.net/2014/12"> Декабрь 2014 </option>
+						<option value="http://arsenyev.net/2014/11"> Ноябрь 2014 </option>
+						<option value="http://arsenyev.net/2014/10"> Октябрь 2014 </option>
+						<option value="http://arsenyev.net/2014/09"> Сентябрь 2014 </option>
+						<option value="http://arsenyev.net/2014/08"> Август 2014 </option>
+						<option value="http://arsenyev.net/2014/07"> Июль 2014 </option>
+						<option value="http://arsenyev.net/2014/06"> Июнь 2014 </option>
+						<option value="http://arsenyev.net/2014/05"> Май 2014 </option>
+						<option value="http://arsenyev.net/2014/04"> Апрель 2014 </option>
+						<option value="http://arsenyev.net/2014/03"> Март 2014 </option>
+						<option value="http://arsenyev.net/2014/02"> Февраль 2014 </option>
+						<option value="http://arsenyev.net/2014/01"> Январь 2014 </option>
+						<option value="http://arsenyev.net/2013/12"> Декабрь 2013 </option>
+						<option value="http://arsenyev.net/2013/11"> Ноябрь 2013 </option>
+						<option value="http://arsenyev.net/2013/10"> Октябрь 2013 </option>
+						<option value="http://arsenyev.net/2013/09"> Сентябрь 2013 </option>
+						<option value="http://arsenyev.net/2013/08"> Август 2013 </option>
+						<option value="http://arsenyev.net/2013/07"> Июль 2013 </option>
+						<option value="http://arsenyev.net/2013/06"> Июнь 2013 </option>
+						<option value="http://arsenyev.net/2013/05"> Май 2013 </option>
+						<option value="http://arsenyev.net/2013/04"> Апрель 2013 </option>
+						<option value="http://arsenyev.net/2013/03"> Март 2013 </option>
+						<option value="http://arsenyev.net/2013/02"> Февраль 2013 </option>
+						<option value="http://arsenyev.net/2013/01"> Январь 2013 </option>
+						<option value="http://arsenyev.net/2012/12"> Декабрь 2012 </option>
+						<option value="http://arsenyev.net/2012/11"> Ноябрь 2012 </option>
+						<option value="http://arsenyev.net/2012/10"> Октябрь 2012 </option>
+						<option value="http://arsenyev.net/2012/09"> Сентябрь 2012 </option>
+						<option value="http://arsenyev.net/2012/08"> Август 2012 </option>
+						<option value="http://arsenyev.net/2012/07"> Июль 2012 </option>
+						<option value="http://arsenyev.net/2012/06"> Июнь 2012 </option>
+						<option value="http://arsenyev.net/2012/05"> Май 2012 </option>
+						<option value="http://arsenyev.net/2012/04"> Апрель 2012 </option>
+						<option value="http://arsenyev.net/2012/03"> Март 2012 </option>
+						<option value="http://arsenyev.net/2012/02"> Февраль 2012 </option>
+						<option value="http://arsenyev.net/2012/01"> Январь 2012 </option>
+						<option value="http://arsenyev.net/2011/12"> Декабрь 2011 </option>
+						<option value="http://arsenyev.net/2011/11"> Ноябрь 2011 </option>
+						<option value="http://arsenyev.net/2011/10"> Октябрь 2011 </option>
+						<option value="http://arsenyev.net/2011/09"> Сентябрь 2011 </option>
+						<option value="http://arsenyev.net/2011/08"> Август 2011 </option>
+						<option value="http://arsenyev.net/2011/07"> Июль 2011 </option>
+						<option value="http://arsenyev.net/2011/06"> Июнь 2011 </option>
+						<option value="http://arsenyev.net/2011/05"> Май 2011 </option>
+						<option value="http://arsenyev.net/2011/04"> Апрель 2011 </option>
+						<option value="http://arsenyev.net/2011/03"> Март 2011 </option>
+						<option value="http://arsenyev.net/2011/02"> Февраль 2011 </option>
+						<option value="http://arsenyev.net/2011/01"> Январь 2011 </option>
+						<option value="http://arsenyev.net/2010/12"> Декабрь 2010 </option>
+						<option value="http://arsenyev.net/2010/11"> Ноябрь 2010 </option>
+						<option value="http://arsenyev.net/2010/10"> Октябрь 2010 </option>
+						<option value="http://arsenyev.net/2010/09"> Сентябрь 2010 </option>
+						<option value="http://arsenyev.net/2010/08"> Август 2010 </option>
+						<option value="http://arsenyev.net/2010/07"> Июль 2010 </option>
+						<option value="http://arsenyev.net/2010/06"> Июнь 2010 </option>
+						<option value="http://arsenyev.net/2010/05"> Май 2010 </option>
+						<option value="http://arsenyev.net/2010/04"> Апрель 2010 </option>
+						<option value="http://arsenyev.net/2010/03"> Март 2010 </option>
+						<option value="http://arsenyev.net/2010/02"> Февраль 2010 </option>
+						<option value="http://arsenyev.net/2010/01"> Январь 2010 </option>
+						<option value="http://arsenyev.net/2009/12"> Декабрь 2009 </option>
+						<option value="http://arsenyev.net/2009/11"> Ноябрь 2009 </option>
+						<option value="http://arsenyev.net/2009/10"> Октябрь 2009 </option>
+						<option value="http://arsenyev.net/2009/09"> Сентябрь 2009 </option>
+						<option value="http://arsenyev.net/2009/08"> Август 2009 </option>
+						<option value="http://arsenyev.net/2009/07"> Июль 2009 </option>
+						<option value="http://arsenyev.net/2009/06"> Июнь 2009 </option>
+						<option value="http://arsenyev.net/2009/05"> Май 2009 </option>
+						<option value="http://arsenyev.net/2009/04"> Апрель 2009 </option>
+						<option value="http://arsenyev.net/2009/03"> Март 2009 </option>
+						<option value="http://arsenyev.net/2009/02"> Февраль 2009 </option>
+						<option value="http://arsenyev.net/2009/01"> Январь 2009 </option>
+						<option value="http://arsenyev.net/2008/12"> Декабрь 2008 </option>
+						</select> 
+					</td>
+					</tr>
+				</table>
+			</td>
 			</tr>
 		</table>
 		</td>
-		<td style="width: 335px; vertical-align: top">
-			<table class="right_table">
-				<tr>
-				<td class="redtd">
-					Спонсоры проекта
-				</td>           
-				</tr>
-				<tr>
-				<td style="font: 12px sans-serif; font-weight: 600; white-space: nowrap;">
-				<a href="#" style="color: black" title="Компьютерный салон MATRIX - компьютеры, ноутбуки, принтеры, мониторы, телевизоры, ремонт компьютеров, картриджи и расходные материалы">MATRIX</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="#" style="color: black" title="Разместить свою рекламу">Разместить свою рекламу</a></td>
-				</tr>
-				<tr>
-				<td class="redtd">
-					Реклама
-				</td>
-				</tr>
-				<tr>
-				<td class="redtd">
-					Поиск в справочнике Арсеньева АрсВики 
-				</td>
-				</tr>
-				<tr>
-				<td style="font: 12px sans-serif; white-space: normal; color: #666666; line-height: 18px;">
-					Поиск организаций и телефонов в справочнике города Арсеньева: расписание автобусов
-				</td>
-				</tr>
-				<tr>
-				<td style="font: 12px sans-serif; white-space: normal; line-height: 18px; color: #666666">
-					Вы можете самостоятельно бесплатно дополнить
-					или исправить информацию о себе в <a href="#" style="color: black">народномсправочнике АрсВики.</a>
-				</td>
-				</tr>
-				<tr>
-				<td class="redtd">
-					Знакомства Арсеньев
-				</td>
-				</tr>
-				<tr>
-				<td class="redtd">
-					<img style="border:0px" width="14" height="14" src="./pics/rss.png" alt="RSS">
-					Арсеньевская соцсеть ArsCity
-				</td>
-				</tr>
-				<tr>
-				<td class="bottom_border">
-					105 лет со дня рождения Акиры Куросавы
-				</td>
-				</tr>
-				<tr>
-				<td class="bottom_border">
-					Три-четыре чашки чая в день сокращают риск диабета, выяснили ученые
-				</td>
-				</tr>
-				<tr>
-				<td class="bottom_border">
-					В Приморье учат летать морских «Аллигаторов»
-				</td>
-				</tr>
-				<tr>
-				<td class="bottom_border">
-					В воздух поднялся первый корабельный вертолет Ка-52К
-				</td>
-				</tr>
-				<tr>
-				<td class="bottom_border">
-					Специалисты природоохранных служб разбираются в ЧП на одном из водоемов Арсеньева
-				</td>
-				</tr>
-				<tr>
-				<td class="redtd">
-					Реклама
-				</td>
-				</tr>
-				<tr>
-				<td class="redtd">
-					Свежие комментарии
-				</td>
-				</tr>
-				<tr>
-				<td class="bottom_border" style="color: #666666">
-					<a href="#" style="color:black">Жители Арсеньева жалуются президенту на растущие цены на продукты | Виртуальный город ArsCity</a>
-					к записи
-					<a href="#"style="color:black">Жители Арсеньева жалуются президенту на растущие цены на продукты</a>
-				</td>
-				</tr>
-				<tr>
-				<td class="bottom_border" style="color: #666666">
-					<a href="#" style="color:black">Жители Арсеньева жалуются президенту на растущие цены на продукты | Виртуальный город ArsCity</a>
-					к записи
-					<a href="#"style="color:black">Жители Арсеньева жалуются президенту на растущие цены на продукты</a>
-				</td>
-				</tr>
-			</table>
+		</tr>
+		<tr>
+		<td style="height: 25px">
+		
 		</td>
 		</tr>
-		</table>
-		</tr>
+		<tr>
+		<td style="background: #f7f7f7; border: 1px solid #ddd; color: #666; padding: 0px; padding-left: 15px; padding-right: 15px; vertical-align: bottom; font-size: 12px;">
+			<p style="float: left">2004-2015 © Арсеньев — народный портал!</p>
+			<p style="float: right">г. Арсеньев, Приморский край, Россия</p>
 		</td>
+		</tr>
         </table>
-
+		<!--<a href="http://top.mail.ru/jump?from=760787"><img src="./site_src/counter" alt="Рейтинг@Mail.ru" border="0" height="31" width="88/"></a>
+		
+		<a href="http://u6026.58.spylog.com/cnt?cid=602658&f=3&p=0&rn=0.5647523098159581"><img src="./site_src/cnt" border="0" width="88" height="31" alt="SpyLOG"></a>
+		
+		<a href="http://click.hotlog.ru/?221133"><img src="http://hit10.hotlog.ru/cgi-bin/hotlog/count?0.5242676285561174&s=221133&im=115&r=https%3A//www.google.ru/&pg=http%3A//arsenyev.net/&c=Y&j=Y&wh=1920x1080&px=24&js=1.3&" border="0" width="88" height="31" alt="HotLog"></a>
+		<a href="http://metrika.yandex.ru/stat/?id=157831&from=informer"><img src="./site_src/3_0_FF2020FF_FF0000FF_1_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:157831,lang:&#39;ru&#39;});return false}catch(e){}"></a>
+		
+		<a href="http://www.farpost.ru/"><img src="./site_src/farpost-catalog.gif" width="88" height="31" border="0" alt="Дальний Восток: Владивосток, Хабаровск, Сахалин, Камчатка, Магадан, Благовещенск, Якутия. Размещено в Каталоге дальневосточных ресурсов FarPost"></a>
+		
+		<a href="http://www.liveinternet.ru/click"><img src="./site_src/hit" title="liveinternet.ru: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня" border="0" width="88" height="31"></a>
+		
+		<a href="http://top100.rambler.ru/home?id=749683"><img src="./site_src/banner-88x31-rambler-black2.gif" alt="Rambler&#39;s Top100" width="88" height="31" border="0"></a>
+		
+		<a href="./site_src/Арсеньев - народный портал! Сайт города Арсеньева.html" title="Арсеньев, город, арсеньевский сайт, справочник, работа, объявления, знакомства, Приморский край, Ка-52, ААК Прогресс, сопка Обзорная, горнолыжка, Халаза"><img src="./site_src/arsenyev_net_th.jpg" alt="Арсеньев, город, арсеньевский сайт, справочник, работа, объявления, знакомства, Приморский край, Ка-52, ААК Прогресс, сопка Обзорная, горнолыжка, Халаза"></a>-->
 	</body>
 </html>

@@ -1,0 +1,36 @@
+/* 
+WOO CUSTOM STYLESHEET
+---------------------
+
+Instructions:
+
+Add your custom styles here instead of style.css so it 
+is easier to update the theme. Simply copy an existing 
+style from style.css to this file, and modify it to 
+your liking.
+
+*/
+
+.adl{
+	float: left;
+    padding: 10px;
+}
+.adr{
+	float: right;
+    padding: 10px;
+}
+.adc{
+  margin: 20px 50px 20px 50px;
+  text-align: center;
+}
+.widget_rss h3 a { color:#fff; }
+
+table.zakaz {
+  border: dotted;
+  border-width: 1px;
+}
+
+td.zakaz {
+    padding: 7px;
+    border: 1px dotted gainsboro;
+   }

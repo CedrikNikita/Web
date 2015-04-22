@@ -1,0 +1,29 @@
+.qcf-style.flower {width:280px;}
+.qcf-style.flower #plain {border:1px solid #415063;}
+.qcf-style.flower input[type=text], .qcf-style.flower textarea, .qcf-style.flower select, .qcf-style.flower #submit {border-radius:0;}
+.qcf-style.flower p, .qcf-style.flower select{font-family: arial, sans-serif; font-size: 1.2em;color: #465069;height:auto;;line-height:normal;height:auto;}
+.qcf-style.flower div.rangeslider, .qcf-style.flower div.rangeslider__fill {background: #CCC;}
+        .qcf-style.flower div.rangeslider__fill {background: #00ff00;}
+        .qcf-style.flower div.rangeslider__handle {background: white;border: 1px solid #CCC;}
+        .qcf-style.flower div.qcf-slideroutput{font-size:1.2em;color:#465069;}.qcf-style.flower input[type=text], .qcf-style.flower textarea, .qcf-style.flower select {border: 1px solid #415063;background:#FFFFFF;font-family: arial, sans-serif; font-size: 1.2em; color: #465069;;line-height:normal;height:auto;}
+.qcf-style.flower input:focus, .qcf-style.flower textarea:focus {background:#FFFFCC;}
+.qcf-style.flower input[type=text].required, .qcf-style.flower select.required, .qcf-style.flower textarea.required {border: 1px solid #00C618;}
+.qcf-style.flower p span {color:#D31900;clear:both;}
+
+.qcf-style.flower input[type=text].error, .qcf-style.flower select.error, .qcf-style.flower textarea.error {border:1px solid #D31900;}
+.qcf-style.flower div {background:#FFF;}
+.qcf-style.flower #submit, .qcf-style.flower #submit:hover{float:left;width:100%;color:#FFF;background:#343838;border:1px solid #415063;font-family: arial, sans-serif;font-size: inherit;}
+.qcf-style.default {width:100%;}
+.qcf-style.default #roundshadow {border:1px solid #415063;}
+.qcf-style.default input[type=text], .qcf-style.default textarea, .qcf-style.default select, .qcf-style.default #submit {border-radius:0;}
+.qcf-style.default p, .qcf-style.default select{font-family: arial, sans-serif; font-size: 1.2em;color: #465069;height:auto;;line-height:normal;height:auto;}
+.qcf-style.default div.rangeslider, .qcf-style.default div.rangeslider__fill {background: #CCC;}
+        .qcf-style.default div.rangeslider__fill {background: #00ff00;}
+        .qcf-style.default div.rangeslider__handle {background: white;border: 1px solid #CCC;}
+        .qcf-style.default div.qcf-slideroutput{font-size:1.2em;color:#465069;}.qcf-style.default input[type=text], .qcf-style.default textarea, .qcf-style.default select {border: 1px solid #415063;background:#FFFFFF;font-family: arial, sans-serif; font-size: 1.2em; color: #465069;;line-height:normal;height:auto;}
+.qcf-style.default input:focus, .qcf-style.default textarea:focus {background:#FFFFCC;}
+.qcf-style.default input[type=text].required, .qcf-style.default select.required, .qcf-style.default textarea.required {border: 1px solid #00C618;}
+.qcf-style.default p span {color:#D31900;clear:both;}
+
+.qcf-style.default input[type=text].error, .qcf-style.default select.error, .qcf-style.default textarea.error {border:1px solid #D31900;}
+.qcf-style.default #submit, .qcf-style.default #submit:hover{float:left;width:100%;color:#FFF;background:#343838;border:1px solid #415063;font-family: arial, sans-serif;font-size: inherit;}
