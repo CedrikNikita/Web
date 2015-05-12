@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" title="Vertical" href="vert.css">
+		<link rel="alternate stylesheet" type="text/css" title="Horizontal" href="horiz.css">
+	</head>
+	<body style="background: #DDD">
+	<div id="nav">
+		<ul class="menu" style="position: relative;">
+			<li>Home</li>
+			<li>Olel
+				<ul>
+					<li>sdsdsdsdsds</li>
+					<li>col
+						<ul>
+							<li>ve</li>
+							<li>vdffdfd</li>
+							<li>vasdasde
+								<ul>
+									<li>vasdasde</li>
+									<li>vasdasde</li>
+									<li>vasdasde</li>
+									<li>vasdasde</li>
+								</ul>
+							</li>
+							<li>qqqve</li>
+						</ul>
+					</li>
+					<li>bol</li>
+				</ul>
+			</li>
+			<li>bendo</li>
+			<li>gendo</li>
+			<li>gendo</li>
+			<li>gendo</li>
+		</ul>
+		</div>
+		<div id="content">
+			<p>
+				Тестирование кода PHP, взаимодействующего с БД
+				Процесс написания тестов для кода, взаимодействующего с БД, практически не отличается от процедуры тестирования обычных классов PHP. Сначала необходимо создать тестовый класс, наследующий PHPUnit_Extensions_Database_TestCase (класс PHPUnit_Extensions_Database_TestCase сам при этом наследует PHPUnit_Framework_TestCase), который будет содержать тесты для методов тестируемого класса. Затем создать тестовые методы, начинающиеся с префикса test, а потом скормить этот код phpunit с указанием имени тестового класса. Отличия заключаются лишь в том, что в тестовом классе обязательно необходимо реализовать два публичных метода — getConnection() и getDataSet(). Первый метод необходим для того, чтобы научить DbUnit работать с БД (придется использовать PDO), а второй для того, чтобы сообщить фреймворку, в какое состояние переводить базу данных перед выполнением очередного теста. Под DataSet в терминологии DbUnit понимается набор из одной или более таблиц. 
+
+				Как говорилось выше, перед выполнением очередного теста (представленного методом в тестовом классе), PHPUnit вызывает специальный метод setUp(), чтобы сэмулировать среду выполнения для объекта тестируемого класса. В случае DbUnit реализация по умолчанию метода setUp() уже не пустая. Если говорить в общих чертах, то внутри метода setUp() будет создан некий объект databaseTester, который, используя определенный нами метод getConnection(), переведет базу в состояние, представленное набором таблиц (DataSet`ом), получаемым при вызове метода getDataSet(). Если вы были внимательны, то реализация метода getDataSet() также должна предоставляться тестовым классом, т.е. нами. В результате получим похожую последовательность вызовов
+			</p>
+			<p>aa</p>
+			<p>aa</p>
+			<p>aa</p>
+			<p>aa</p>
+			<p>aa</p>
+			<p>aa</p>
+		</div>
+	</body>
+</html>
