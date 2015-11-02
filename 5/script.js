@@ -1,6 +1,11 @@
 window.onload = function(){
 }
 
+function func(obj) {
+    var elem = document.getElementById(obj);
+    elem.style.backgroundColor = 'red';
+};
+
 function check(){
 	var bits = document.getElementById("date").value.split('.');
 	var d = new Date(bits[2], bits[1] - 1, bits[0]);
@@ -23,6 +28,9 @@ function check(){
 				var cell = row.insertCell(j);
 				cell.innerHTML = new_date.getDate();
 				cell.className = 'Td';
+				var num = i + j;
+				cell.id = toString(num);
+				cell.onclick = func(this.id);
 				new_date.setTime(new_date.getTime() + 1000 * 60 * 60 * 24);
 			}
 		}

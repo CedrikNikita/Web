@@ -29,7 +29,7 @@ function separation(arr, left, right){
         var mid = Math.floor((left + right) * 0.5);
         separation(arr, left, mid);
         separation(arr, mid + 1, right);
-        mergesort(arr, left, mid,right);
+        mergesort(arr, left, mid, right);
     }
 }
 
@@ -75,7 +75,12 @@ var array = [
 ]
 
 for(var i = 0; i < array.length; i++){
-	var a = array[i].sort()
+	
+	//document.write('aaaaaa' + array[i] + '<br>')
+	var a = array[i].slice()
+	//document.write('aaaaaa' + a + '<br>')
+	a.sort(function(a, b){return a-b})
+	//document.write('aaaaaa' + a + '<br>')
 	var start = new Date().getTime()
 	separation(array[i], 0, array[i].length - 1)
 	start = new Date().getTime() - start
@@ -85,10 +90,14 @@ for(var i = 0; i < array.length; i++){
 	document.write('Time sorting ' + start + '<br>')
 	var textf = "False"
 	var textt = "True"
-	if(array[i] == a)
-		document.write(textt.fontcolor("green") + "<br>")
-	else
-		document.write(textf.fontcolor("red") + "<br>")
+	var check = 1
+	for(var j = 0; j < a.length - 1; j++)
+		if(a[j] > a[j + 1]){
+			document.write(textf.fontcolor("red") + "<br>")
+			check = 0
+			break
+	}
+	if(check) document.write(textt.fontcolor("green") + "<br>")
 
 	document.write('<br>')
 }
