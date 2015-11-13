@@ -1,64 +1,54 @@
-window.onload = function(){
-    setInterval(watch, 1000);
-}
-
 function watch(){
 	var date = new Date();
 
-	var t = date.getHours() + ':' +
-			date.getMinutes() + ':' + 
-			date.getSeconds();
+	var t = ("0" + date.getHours()).slice(-2) + ':' +
+			("0" + date.getMinutes()).slice(-2) + ':' + 
+			("0" + date.getSeconds()).slice(-2);
 
 	var Time = document.getElementById('time');
 	Time.innerHTML = t;
 };
 
-var days = new Array();
-days[0] = "воскресенье";
-days[1] = "понедельник";
-days[2] = "вторник";
-days[3] = "среда";
-days[4] = "четверг";
-days[5] = "пятница";
-days[6] = "суббота";
+var days = [
+	"воскресенье",
+	"понедельник",
+	"вторник",
+	"среда",
+	"четверг",
+	"пятница",
+	"суббота"
+];
 
+var month = [
+	"Январь",
+	"Февраль",
+	"Март",
+	"Апрель",
+	"Май",
+	"Июнь",
+	"Июль",
+	"Август",
+	"Сентябрь",
+	"Октябрь",
+	"Ноябрь",
+	"Декабрь"
+];
+var month_ending = [
+	"января",
+	"февраля", 
+	"марта",
+	"апреля",
+	"мая",
+	"июня",
+	"июля",
+	"августа",
+	"сентября",
+	"октября",
+	"ноября",
+	"декабря"
+];
 
-var month = new Array();
-month[0] = "Январь";
-month[1] = "Февраль";
-month[2] = "Март";
-month[3] = "Апрель";
-month[4] = "Май";
-month[5] = "Июнь";
-month[6] = "Июль";
-month[7] = "Август";
-month[8] = "Сентябрь";
-month[9] = "Октябрь";
-month[10] = "Ноябрь";
-month[11] = "Декабрь";
-
-var month_ending = new Array();
-month_ending[0] = "января";
-month_ending[1] = "февраля";
-month_ending[2] = "марта";
-month_ending[3] = "апреля";
-month_ending[4] = "мая";
-month_ending[5] = "июня";
-month_ending[6] = "июля";
-month_ending[7] = "августа";
-month_ending[8] = "сентября";
-month_ending[9] = "октября";
-month_ending[10] = "ноября";
-month_ending[11] = "декабря";
-
-var cutdays = new Array();
-cutdays[0] = "Пн";
-cutdays[1] = "Вт";
-cutdays[2] = "Ср";
-cutdays[3] = "Чт";
-cutdays[4] = "Пт";
-cutdays[5] = "Сб";
-cutdays[6] = "Вс";
+var cutdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
 function check(){
 	var bits = document.getElementById("date").value.split('.');
@@ -69,82 +59,79 @@ function check(){
 		return;
 	}
 	new_date.setDate(1);
-	function create(){
-		var n = 0;
-		while(new_date.getDay() != 1){
-			n++;
+	var table = document.createElement('table');
+	document.body.appendChild(table);
+	function create(current_month){
+		while(new_date.getDay() != 1)
 			new_date.setTime(new_date.getTime() - 86400000); //milliseconds in day
-		}
-		var table = document.createElement('table');
-		var cell = (table.insertRow(0)).insertCell(0);
+		var thead = table.createTHead();
+		var cell = (thead.insertRow(0)).insertCell(0);
 		cell.id = "time";
+		watch();
+		setInterval(watch, 250);
 		cell.colSpan = "7";
-		cell.style.fontSize = "28pt";
-		cell = (table.insertRow(1)).insertCell(0);
+		cell = (thead.insertRow(1)).insertCell(0);
 		cell.colSpan = "7";
-		cell.style.color = "#429CE3";
 		var year = 1900 + d.getYear();
 		cell.innerHTML = days[d.getDay()] + ", " + d.getDate() + " " + month_ending[d.getMonth()] + " " + year + ".";
-		row = table.insertRow(2);
+		cell.id = "day";
+		row = thead.insertRow(2);
 		cell = row.insertCell(0);
 		cell.colSpan = "5";
-		cell.style.fontSize = "16pt";
 		cell.innerHTML = month[d.getMonth()] + " " + year;
+		cell.id = "month";
 		cell = row.insertCell(1);
-		cell.innerHTML = "&#10553";
+		cell.id = "up"; 
 		cell = row.insertCell(2);
-		cell.innerHTML = "&#10552";
-		var dayrow = table.insertRow(3);
+		cell.id = "down";
+		var dayrow = thead.insertRow(3);
+		dayrow.id = "days";
 		dayrow.style.fontSize = "10pt";
-		dayrow.style.textAlign = "center";
 		for(var i = 0; i < 7; i++)
 			(dayrow.insertCell(i)).innerHTML = cutdays[i];
-		
-		for(var i = 4; i < 10; i++){
-			var row = table.insertRow(i);
+		var tbody = document.createElement('tbody');
+		table.appendChild(tbody);
+		for(var i = 0; i < 6; i++){
+			var row = tbody.insertRow(i);
 			for(var j = 0; j < 7; j++){
 				var cell = row.insertCell(j);
-				cell.innerHTML = new_date.getDate();
+				
 				if(new_date.getMonth() != d.getMonth())
-					cell.style.color = "#838383";
+					cell.className = "gray";
 					
-				cell.style.border = "1px solid #525050";
-				cell.onmouseover = function(event){
-					var target = event.target;
-					target.style.border = "1px solid #999999";
-				}
-				cell.onmouseout = function(event){
-					var target = event.target;
-					target.style.border = "1px solid #525050";
-				}
 				if((new_date.getDate() == d.getDate()) && (new_date.getMonth() == d.getMonth())){
-					cell.style.backgroundColor = "#0078D7";
-					cell.style.border = "1px solid #000000";
-					cell.onmouseover = function(event){
-						var target = event.target;
-						target.style.border = "1px solid #000000";
-					}
-					cell.onmouseout = function(){}
+					var div = document.createElement('div');
+					cell.appendChild(div);
+					div.innerHTML = new_date.getDate();
+					div.style.position = "relative";
+					cell.id = "today";
+					var clicked = cell;
 				}
-				cell.className = 'Td';
-				cell.width = "30px";
-				cell.height = "30px";
-				cell.style.textAlign = "center";
-				var num = i + j;
-				cell.id = toString(num);
+				else
+					cell.innerHTML = new_date.getDate();
 				new_date.setTime(new_date.getTime() + 86400000);
+
+				cell.onclick = function (event){
+					var target = event.target;
+
+					if(target.id == "nstoday") 
+						target.id = "today";
+					else if(target.parentNode.id == "nstoday")
+						target.parentNode.id = "today";
+					else
+						target.className = "selected";
+
+					if(clicked.id == "today")
+						clicked.id = "nstoday";
+					else if(clicked.parentNode.id == "today")
+						clicked.parentNode.id = "nstoday";
+					else
+						clicked.className = "notselected";
+					clicked = target;
+				}
 			}
 		}
-		table.style.color = "#FFFFFF";
-		table.style.fontFamily = "Arial, sans-serif";
-		table.style.backgroundColor = "#525050";
-		table.style.padding = "10px";
-		document.body.appendChild(table);
 	}
 	var button = document.createElement('button');
 	button.onclick = create();
 }
-
-
-
-//TODO: смещение первых строк вправо

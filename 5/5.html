@@ -3,8 +3,96 @@
 	<head>
 		<meta charset="utf-8">
 		<script src="script.js"></script>
+		<style>
+			table{
+				font-family: Segoe UI, Arial, sans-serif;
+				color: #FFFFFF;
+				background-color: rgba(82, 80, 80, 0.87);
+				padding: 10px;
+			}
+			#time{
+				font-weight: lighter;
+				font-size: 33pt;	
+			}
+			#month{
+				color: #DBDCDC;
+				font-size: 14pt;
+				font-weight: 600;
+			}
+			#day{
+				padding-bottom: 10px;
+				padding-top: 0px;
+				color: #429CE3;
+			}
+			#days td{
+				text-align: center;
+				padding-left: 0;
+			}
+			table thead td:first-child{
+				padding-left: 10px;
+			}
+			table tbody td{
+				font-size: 15pt;
+				width: 40px;
+				height: 35px;
+				text-align: center;
+				border: 2px solid transparent;
+			}
+			table tbody td:hover{
+				border: 2px solid #999999;
+			}
+			#up{
+				background-image: url(img/uparrow.svg);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			#up:hover{
+ 				background-image: url(img/uparrowhovered.svg);
+			}
+			#down{
+				background-image: url(img/downarrow.svg);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			#down:hover{
+ 				background-image: url(img/downarrowhovered.svg);
+			}
+			.gray{
+				color: #838383;
+			}
+			.selected{
+				border: 2px solid #429CE3;
+			}
+			.selected:hover{
+				border: 2px solid #0078D7;
+			}
+			.notselected{
+				border: 2px solid transparent;
+			}
+			#today{
+				background-color: #0078D7;
+				border: 2px solid #0078D7;
+			}
+			#today div{
+				border: 2px solid #000000;
+			}
+			#today:hover{
+				border: 2px solid #429CE3;
+			}
+			#nstoday{								/*TODO: nstoday today*/
+				background-color: #0078D7;
+				border: 2px solid #0078D7;
+			}
+			#nstoday:hover{
+				border: 2px solid #429CE3;
+			}
+			#nstoday div{
+				border: 2px solid #0078D7;
+			}
+		</style>
 	</head>
 	<body style = "margin: 30px;">
+
 	<input id = "date" style = "float: left"></input>
 	<button onclick = "check()"; style = "height: 24px; float: left; margin-left: 20px;">OK</button>
 	</body>
