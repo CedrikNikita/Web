@@ -4,8 +4,9 @@ function watch(){
 			("0" + date.getMinutes()).slice(-2) + ':' + 
 			("0" + date.getSeconds()).slice(-2);
 
-	var Time = document.getElementById('time');
-	Time.innerHTML = t;
+	var time = document.getElementsByClassName('time');
+	for(var i = 0; i < time.length; i++)
+		time[i].innerHTML = t;
 };
 
 var days = [
@@ -50,40 +51,63 @@ var month_ending = [
 
 var cutdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
-/*window.onload = function(){
-	document.getElementsByClassName("date")
-}*/
+window.onload = function(){
+	var arr = document.getElementsByClassName("date");
+	for(var i = 0; i < arr.length; i++)
+		check(arr[i]);
+}
 
-function check(){
-	var bits = document.getElementById("date").value.split('.');
-	if(bits == "" || new Date(bits[2], bits[1] - 1, bits[0]).getDate() < Number(bits[0])){
-		alert('dsdsd');
-		return;
+function check(elem){
+	var d;
+	var new_date;
+	var table;
+
+	var wrapper = document.createElement('div');
+	elem = elem.parentNode.replaceChild(wrapper, elem);
+	wrapper.appendChild(elem);
+
+	var button = document.createElement("button");
+	wrapper.appendChild(button);
+	button.innerHTML = "OK";
+	button.onclick = button_click;
+
+	function button_click () {
+		var bits = elem.value.split('.');
+		if(bits == "" || new Date(bits[2], bits[1] - 1, bits[0]).getDate() < Number(bits[0])){
+			alert('dsdsd');
+			return;
+		}
+		d = new Date(bits[2], bits[1] - 1, bits[0]);
+		new_date = new Date(bits[2], bits[1] - 1, bits[0]);
+		create();
 	}
-	var d = new Date(bits[2], bits[1] - 1, bits[0]);
-	var new_date = new Date(bits[2], bits[1] - 1, bits[0]);
+
 	function create(){
 		new_date.setDate(1);
-		var curr_year = new_date.getYear();
-		var curr_month = new_date.getMonth();
-		var oldtable = document.getElementById("table");
-		if(oldtable)
-			oldtable.parentNode.removeChild(oldtable);
-		var table = document.createElement('table');
-		document.body.appendChild(table);
+		var curr_year = new_date.getFullYear();
+		var curr_month = new_date.getMonth(); 
+		/*if(table)
+			table.parentNode.removeChild(table); // чинить
+		table = document.createElement('table');*/
+		if(table){
+			table.removeChild(table.childNodes[1]);
+			table.removeChild(table.childNodes[0]);
+		}
+		else 
+			table = document.createElement('table');
+		wrapper.appendChild(table);
 		table.id = "table";
 		while(new_date.getDay() != 1)
 			new_date.setDate(new_date.getDate() - 1); //
 			//new_date.setTime(new_date.getTime() - 86400000); //1000 * 60 * 60 * 24 milliseconds in day
 		var thead = table.createTHead();
 		var cell = (thead.insertRow(0)).insertCell(0);
-		cell.id = "time";
+		cell.className = "time";
 		watch();
 		setInterval(watch, 250);
 		cell.colSpan = "7";
 		cell = (thead.insertRow(1)).insertCell(0);
 		cell.colSpan = "7";
-		var year = 1900 + d.getYear();
 		var a = document.createElement('a');
 		cell.appendChild(a);
 		a.onclick = function (event){
@@ -91,13 +115,12 @@ function check(){
 			new_date.setYear(d.getYear());
 			create();
 		}
-		a.innerHTML = days[d.getDay()] + ", " + d.getDate() + " " + month_ending[d.getMonth()] + " " + year + ".";
+		a.innerHTML = days[d.getDay()] + ", " + d.getDate() + " " + month_ending[d.getMonth()] + " " + d.getFullYear() + ".";
 		cell.id = "day";
 		row = thead.insertRow(2);
 		cell = row.insertCell(0);
 		cell.colSpan = "5";
-		year = curr_year + 1900;
-		cell.innerHTML = month[curr_month] + " " + year;
+		cell.innerHTML = month[curr_month] + " " + curr_year;
 		cell.id = "month";
 		cell = row.insertCell(1);
 		cell.id = "up"; 
@@ -105,7 +128,7 @@ function check(){
 			if(curr_month)
 				new_date.setMonth(curr_month - 1);
 			else{
-				new_date.setYear(new_date.getYear() + 1899);
+				new_date.setYear(new_date.getFullYear() - 1);
 				new_date.setMonth(11);
 			}
 			create();
@@ -116,15 +139,15 @@ function check(){
 			if(curr_month != 11)
 				new_date.setMonth(curr_month + 1);
 			else{
-				new_date.setYear(new_date.getYear() + 1901);
+				new_date.setYear(new_date.getFullYear() + 1);
 				new_date.setMonth(0);
 			}
 			create();
 		}
-		var dayrow = thead.insertRow(3);
-		dayrow.id = "days";
+		row = thead.insertRow(3);
+		row.id = "days";
 		for(var i = 0; i < 7; i++)
-			(dayrow.insertCell(i)).innerHTML = cutdays[i];
+			(row.insertCell(i)).innerHTML = cutdays[i];
 		var tbody = document.createElement('tbody');
 		table.appendChild(tbody);
 		for(var i = 0; i < 6; i++){
@@ -132,7 +155,7 @@ function check(){
 			for(var j = 0; j < 7; j++){
 				var cell = row.insertCell(j);
 		
-				cell.onclick = function (event){ 
+				/*cell.onclick = function (event){ 
 					if(target.id == "nstoday") //trash, crap
 						target.id = "today";
 					else if(target.parentNode.id == "nstoday")
@@ -147,7 +170,7 @@ function check(){
 					else
 						clicked.className = "notselected";
 					clicked = target;
-				}
+				}*/
 
 				if(new_date.getMonth() != curr_month){
 					cell.className = "gray";
@@ -158,7 +181,7 @@ function check(){
 					}(new_date.getMonth() - curr_month < 0);
 				}
 					
-				if((new_date.getDate() == d.getDate()) && (new_date.getMonth() == d.getMonth())){
+				if(new_date.getDate() == d.getDate() && new_date.getMonth() == d.getMonth()){
 					var div = document.createElement('div');
 					cell.appendChild(div);
 					div.innerHTML = new_date.getDate();
@@ -167,19 +190,17 @@ function check(){
 				}
 				else
 					cell.innerHTML = new_date.getDate();
-				//new_date.setTime(new_date.getTime() + 86400000);
 				new_date.setDate(new_date.getDate() + 1);
 			}
 		}
 		new_date.setMonth(curr_month);
 		new_date.setDate(1);
-		new_date.setYear(year);
+		new_date.setYear(curr_year);
 	}
-	create();
 }
 
 //TODO: Двойной выбор ячейки из-за ссылки
 //TODO: input change date
 //TODO: input date not correct
 //TODO: div
-//TODO: календарь для всех
+//TODO: переход по месяцам перестроение
