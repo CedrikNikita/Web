@@ -51,21 +51,33 @@ var month_ending = [
 
 var cutdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
-$.fn.calendar =
-function (){
+function check ($input) {
+	var parts = $input.val().split('.');
+	if(parts == "" || isNaN(new Date(parts[2], parts[1] - 1, parts[0]).getTime()) 
+	|| new Date(parts[2], parts[1] - 1, parts[0]).getDate() < Number(parts[0])){
+		$input.css("background", "#F00");
+		return 1;
+	}
+	return 0;
+}
+
+$.fn.calendar = function (){
 	var d;
 	var new_date;
 	var $table;
 
-	var $elem = $(this);
-	if($elem.length != 1){
-		for(var i = 0; i < $elem.length; i++)
+	var $input = $(this);
+	if($input.length != 1){
+		for(var i = 0; i < $input.length; i++)
 			$(this[i]).calendar();
 		return;
 	}
 	var $wrapper = $("<div>");
-	$elem.replaceWith($wrapper);
-	$wrapper.append($elem);
+	$input.replaceWith($wrapper);
+	$input.keyup(function () {
+		$input.css("background", "");
+	});
+	$wrapper.append($input);
 
 	$button = $("<button>");
 	$wrapper.append($button);
@@ -74,13 +86,17 @@ function (){
 	function create(){
 		new_date.setDate(1);
 		var curr_year = new_date.getFullYear();
-		var curr_month = new_date.getMonth(); 
-		if($table)
-			$table.empty();
-		else
-			$table = $("<table>");
+		var curr_month = new_date.getMonth();
+		function up(event){
+			new_date.setMonth(curr_month - 1);
+			create();
+		}
+		function down(event){
+			new_date.setMonth(curr_month + 1);
+			create();
+		}
+		($table)?$table.empty():$table = $("<table>");
 		$wrapper.append($table);
-		$table.id = "table";
 		while(new_date.getDay() != 1)
 			new_date.setDate(new_date.getDate() - 1); 
 		var $thead = $("<thead>");
@@ -96,7 +112,9 @@ function (){
 		$cell.append($a);
 		$a.click(function (event){
 			new_date.setMonth(d.getMonth());
-			new_date.setYear(d.getYear());
+			new_date.setFullYear(d.getFullYear());
+			var month = d.getMonth() + 1;
+			$input.val(d.getDate() + "." + month  + "." + d.getFullYear());
 			create();
 		});
 		$a.html(days[d.getDay()] + ", " + d.getDate() + " " + month_ending[d.getMonth()] + " " + d.getFullYear() + ".");
@@ -108,26 +126,10 @@ function (){
 		$cell.attr('id', 'month');
 		$cell = $("<td>").appendTo($row);
 		$cell.attr('id', 'up');
-		$cell.click(function (event){
-			if(curr_month)
-				new_date.setMonth(curr_month - 1);
-			else{
-				new_date.setYear(new_date.getFullYear() - 1);
-				new_date.setMonth(11);
-			}
-			create();
-		});
+		$cell.click(up);
 		$cell = $("<td>").appendTo($row);
 		$cell.attr('id','down');
-		$cell.click(function (event){
-			if(curr_month != 11)
-				new_date.setMonth(curr_month + 1);
-			else{
-				new_date.setYear(new_date.getFullYear() + 1);
-				new_date.setMonth(0);
-			}
-			create();
-		});
+		$cell.click(down);
 		var $row = $("<tr>").appendTo($thead);
 		$row.attr('id', 'days');
 		for(var i = 0; i < 7; i++)
@@ -137,32 +139,6 @@ function (){
 			$row = $("<tr>").appendTo($tbody);
 			for(var j = 0; j < 7; j++){
 				$cell = $("<td>").appendTo($row);
-		
-				/*cell.onclick = function (event){ 
-					if(target.id == "nstoday") //trash, crap
-						target.id = "today";
-					else if(target.parentNode.id == "nstoday")
-						target.parentNode.id = "today";
-					else
-						target.className = "selected";
-
-					if(clicked.id == "today")
-						clicked.id = "nstoday";
-					else if(clicked.parentNode.id == "today")
-						clicked.parentNode.id = "nstoday";
-					else
-						clicked.className = "notselected";
-					clicked = target;
-				}*/
-
-				if(new_date.getMonth() != curr_month){
-					$cell.attr('class', 'gray');
-					$cell.click(function(flag){
-						return function (event) {
-							$(flag?"#up":"#down").click();
-						}
-					}(new_date.getMonth() - curr_month < 0));
-				}
 					
 				if(new_date.getDate() == d.getDate() && new_date.getMonth() == d.getMonth() &&  new_date.getFullYear() == d.getFullYear() ){
 					var $div = $("<div>");
@@ -172,6 +148,41 @@ function (){
 				}
 				else
 					$cell.html(new_date.getDate());
+
+				if(new_date.getMonth() != curr_month){
+					$cell.attr('class', 'gray');
+					$cell.click(function(flag){
+						var d = new Date(new_date);
+						return function (event) {
+							var month = d.getMonth() + 1;
+							$input.val(d.getDate() + "." + month  + "." + d.getFullYear());
+							flag?up():down();
+						}
+					}(new_date < new Date(curr_year, curr_month, 1)));
+				}
+				else{
+					$cell.click(function (){
+						var d = new Date(new_date);
+						return function() {
+							var month = d.getMonth() + 1;
+							$input.val(d.getDate() + "." + month  + "." + d.getFullYear());
+						}
+					}());
+				}
+				/*if(target.id == "nstoday") //trash, crap
+					target.id = "today";
+				else if(target.parentNode.id == "nstoday")
+					target.parentNode.id = "today";
+				else
+					target.className = "selected";
+
+				if(clicked.id == "today")
+					clicked.id = "nstoday";
+				else if(clicked.parentNode.id == "today")
+					clicked.parentNode.id = "nstoday";
+				else
+					clicked.className = "notselected";
+				clicked = target;*/
 				new_date.setDate(new_date.getDate() + 1);
 			}
 		}
@@ -180,23 +191,16 @@ function (){
 		new_date.setYear(curr_year);
 	}
 
-	var button_click = function () {
-		var lel = $elem.val().split('.');
-		var bits = $elem.val().split('.');
-		if(bits == "" || new Date(bits[2], bits[1] - 1, bits[0]).getDate() < Number(bits[0])){
-			alert('dsdsd');
+	$button.click(function(){
+		var parts = $input.val().split('.');
+		if(check($input))
 			return;
-		}
-		d = new Date(bits[2], bits[1] - 1, bits[0]);
-		new_date = new Date(bits[2], bits[1] - 1, bits[0]);
+		d = new Date(parts[2], parts[1] - 1, parts[0]);
+		new_date = new Date(parts[2], parts[1] - 1, parts[0]);
 		create();
-	}
-	$button.click(button_click);
+	});
 }
 
 //TODO: Двойной выбор ячейки из-за ссылки
-//TODO: input change date
-//TODO: input date not correct
-//TODO: div
-//TODO: переход по месяцам перестроение
+
 

@@ -58,7 +58,7 @@ a:hover{
 	background-position: center;
 }
 #down:hover{
-		background-image: url(img/downarrowhovered.svg);
+	background-image: url(img/downarrowhovered.svg);
 }
 .gray{
 	color: #838383;
